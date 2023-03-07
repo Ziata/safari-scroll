@@ -1,13 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: -webkit-fill-available;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header {
+  @apply h-[100px] w-full bg-green-400;
+}
+.main {
+  @apply w-full bg-blue-400;
+}
+.content {
+  @apply overflow-y-scroll;
+}
+.footer {
+  @apply h-[100px] w-full bg-yellow-400 flex items-center justify-center;
+}
+
+/* fixed  */
+
+[data-type="fixed"] .header {
+  @apply fixed;
+}
+
+[data-type="fixed"] .main {
+  @apply h-[calc(100vh-100px)] pt-[100px] mb-[100px];
+}
+
+[data-type="fixed"] .content {
+  @apply h-full;
+}
+
+[data-type="fixed"] .footer {
+  @apply fixed bottom-0;
+}
+
+/* absolute  */
+
+[data-type="absolute"] .header {
+  @apply absolute top-0 left-0;
+}
+
+[data-type="absolute"] .main {
+  @apply absolute top-[100px] bottom-[100px];
+}
+
+[data-type="absolute"] .content {
+  @apply h-full;
+}
+
+[data-type="absolute"] .footer {
+  @apply absolute bottom-0;
+}
+
+/* flex */
+
+[data-type="flex"] {
+  @apply flex flex-col h-screen overflow-hidden;
+  max-height: -webkit-fill-available;
+}
+
+[data-type="flex"] .main {
+  @apply flex-1 overflow-y-scroll;
+}
+
+[data-type="flex"] .content {
+  @apply overflow-auto;
 }
